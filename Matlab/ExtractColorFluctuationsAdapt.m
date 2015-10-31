@@ -1,20 +1,18 @@
-function [red_ch green_ch blue_ch] = ExtractColorFluctuationsAdapt(VideoPath)
-    reduction_factor = 8;
+function color_channels = ExtractColorFluctuationsAdapt(VideoPath, reduction_coef)
     xyloObj = VideoReader(VideoPath);
     nFrames = xyloObj.NumberOfFrames;
     vidHeight = xyloObj.Height;
     vidWidth = xyloObj.Width;
        
-    red_ch = zeros(vidHeight/reduction_factor, vidWidth/reduction_factor, nFrames);
-    green_ch = zeros(vidHeight/reduction_factor, vidWidth/reduction_factor, nFrames);
-    blue_ch = zeros(vidHeight/reduction_factor, vidWidth/reduction_factor, nFrames);
+    color_channels{1} = zeros(vidHeight/reduction_coef, vidWidth/reduction_coef, nFrames);
+    color_channels{2} = zeros(vidHeight/reduction_coef, vidWidth/reduction_coef, nFrames);
+    color_channels{3} = zeros(vidHeight/reduction_coef, vidWidth/reduction_coef, nFrames);
     for k = 1 : nFrames
         k/nFrames
         im = read(xyloObj, k);     
-        red_ch(:,:,k) = (im(1:reduction_factor:vidHeight,1:reduction_factor:vidWidth,1));
-        green_ch(:,:,k) = (im(1:reduction_factor:vidHeight,1:reduction_factor:vidWidth,2));
-        blue_ch(:,:,k) = (im(1:reduction_factor:vidHeight,1:reduction_factor:vidWidth,3));
+        color_channels{1}(:,:,k) = (im(1:reduction_coef:vidHeight,1:reduction_coef:vidWidth,1));
+        color_channels{2}(:,:,k) = (im(1:reduction_coef:vidHeight,1:reduction_coef:vidWidth,2));
+        color_channels{3}(:,:,k) = (im(1:reduction_coef:vidHeight,1:reduction_coef:vidWidth,3));
     end
 
-    
 end
