@@ -3,13 +3,14 @@ function [ibli maxtab] = extract_hrv_from_ppg(original_ppg)
     signal_length = length(original_ppg);
     length_threshold = 4;
     minimum_beat_range = samplingrate/10;
-    plot_range = 0*samplingrate+1:length(original_ppg);%10*samplingrate;
+    plot_range = 2200:3600;
+    %plot_range = 0*samplingrate+1:length(original_ppg);%10*samplingrate;
     %corrected fi= filtered_signal;
-    beat_threshold = std(original_ppg)/2;
+    beat_threshold = std(original_ppg)/4;
     zero_ind = find(original_ppg < beat_threshold);
     ppg = original_ppg;
     ppg(zero_ind) = 0;
-%     figure('Position', [100, 100, 540, 257]), hold on, plot(plot_range/samplingrate, ppg(plot_range)); title('Samples less than \sigma are removed');
+    %figure('Position', [100, 100, 540, 257]), hold on, plot(plot_range/samplingrate, original_ppg(plot_range)); title('Detected beats');
     %%  ( 1 )  Detect the beginning and the end of the range of a beat candidate 
     % (3, a) Find the beginning of each beat 
     
@@ -45,7 +46,7 @@ function [ibli maxtab] = extract_hrv_from_ppg(original_ppg)
         Y = ppg(beat_begins(beats_ind(i)) : beat_begins(beats_ind(i)) + beat_width(beats_ind(i)));
         X = (0:length(Y) - 1);
         X_ = (0:1/4:length(Y) - 1); % 1/4 is a coefficient for upsampling to improve beat detection 
-        P = polyfit(X',Y,3);
+        P = polyfit(X,Y,3);
         %Y_approx = P(1)*X_.*X_ + P(2)*X_ + P(3);
         Y_approx = P(1)*X_.*X_.*X_ + P(2)*X_.*X_ + P(3)*X_ + P(4);
         [max_val max_pos] = max(Y_approx);
@@ -68,7 +69,7 @@ function [ibli maxtab] = extract_hrv_from_ppg(original_ppg)
     end
 
    ibli = diff(sel_peaks)/samplingrate; 
-   maxtab = [round(sel_peaks)' original_ppg(round(sel_peaks))];
+   maxtab = [round(sel_peaks); original_ppg(round(sel_peaks))];
    maxtab(:, 1) = uint32(maxtab(:,1));
 %    plot(maxtab(:,1), maxtab(:,2),'r.');
 %     ibli = diff(max_loc)/250; 
