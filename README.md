@@ -37,18 +37,20 @@ finds minima in between the peaks detected by localizeMaxima ().
 _Example_:
 `minLocs = localizeMinima(ppg, maxLocs);`
 
-#### Function 
-peakEnvelopeGivenPeaks() make use of maxima and minima to find the envelope of the signal.
+#### peakEnvelopeGivenPeaks() 
+make use of maxima and minima to find the envelope of the signal.
 
 _Example_:
 `env = peakEnvelopeGivenPeaks(ppg, minLocs, maxLocs);`
 
- #### equalizeSignal() uses located minima and maxima to equalize the signal.
+ #### equalizeSignal() 
+ uses located minima and maxima to equalize the signal.
 
 _Example_:
 `eqPpg = equalizeSignal(ppg, env);`
 
-#### segmentBeats() splits an input signal into array of beats. The beats are resampled to have the same number of samples. 
+#### segmentBeats() 
+splits an input signal into array of beats. The beats are resampled to have the same number of samples. 
 
 _Example_:
 `beats = segmentBeats(ppg, minLocs, 30);`
