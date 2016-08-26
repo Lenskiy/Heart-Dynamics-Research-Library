@@ -3,8 +3,8 @@
 A set of function for extracting PPG from videos recorded by a smartphone’s camera. The tip of the finger should be resting on the camera, gently pressing the camera.
 
 
-![PPG analysis](https://github.com/Lenskiy/Eye-research-library/blob/master/v3/Figures/flowchart.png width="600)
 
+<img src="https://github.com/Lenskiy/Eye-research-library/blob/master/v3/Figures/flowchart.png" width="600">
 
 
 #### readVideo() 
@@ -19,8 +19,7 @@ visualize the cell array containing the video.
 _Example_:
 `playVideo(subject{1}, framerate);`
 
-![Video demo](https://github.com/Lenskiy/Eye-research-library/blob/master/v3/Figures/videoDemo.png)
-
+<img src="https://github.com/Lenskiy/Eye-research-library/blob/master/v3/Figures/videoDemo.png" width="600">
 
 
 #### videoToPPG() 
@@ -34,7 +33,7 @@ ppgs{k}{2} = videoToPPG(subject{k}{2}, framerate);
 ppgs{k}{3} = videoToPPG(subject{k}{3}, framerate);
 end
 ```
-![PPG](https://github.com/Lenskiy/Eye-research-library/blob/master/v3/Figures/ppgDemo.png)
+<img src="https://github.com/Lenskiy/Eye-research-library/blob/master/v3/Figures/ppgDemo.png" width="600">
 
 #### localizeMaxima()
 find peaks in a given PPG. The function first smooths the signal using Savitzky-Golay method and then apply findpeaks_ext() to find the maxima.
@@ -54,8 +53,8 @@ make use of maxima and minima to find the envelope of the signal.
 _Example_:
 `env = peakEnvelopeGivenPeaks(ppg, minLocs, maxLocs);`
 
-![envelope](https://github.com/Lenskiy/Eye-research-library/blob/master/v3/Figures/envelopeDemo.png)
 
+<img src="https://github.com/Lenskiy/Eye-research-library/blob/master/v3/Figures/envelopeDemo.png" width="600">
 
  #### equalizeSignal() 
  uses located minima and maxima to equalize the signal.
@@ -75,9 +74,9 @@ finds the best shape of a heart beat shape. The function clusters all beats into
 _Example_:
 `[bestShape, beatCentroids_, goodBeatsIndx, hist] = findBestBeatShape(beats, 3);`
 
-![clusters](https://github.com/Lenskiy/Eye-research-library/blob/master/v3/Figures/clustersDemo.png)
+<img src="https://github.com/Lenskiy/Eye-research-library/blob/master/v3/Figures/clustersDemo.png" width="600">
 
-![heartBeatShapes](https://github.com/Lenskiy/Eye-research-library/blob/master/v3/Figures/heartBeatShapes.png)
+<img src="https://github.com/Lenskiy/Eye-research-library/blob/master/v3/Figures/heartBeatShapes.png" width="600">
 
 
 #### adjustBeats() 
@@ -87,8 +86,7 @@ Although a better model of a heart beat should be created.
 _Examples_:
 `beatsLocs = adjustBeats(ppg, maxLocs(goodBeatsIndx), framerate);`
 
-![beatAdjustment](https://github.com/Lenskiy/Eye-research-library/blob/master/v3/Figures/beatAdjustment.png)
-
+<img src="https://github.com/Lenskiy/Eye-research-library/blob/master/v3/Figures/beatAdjustment.png" width="600">
 
 #### Heart rate variabitly is simply calculated as follows
 `hrv = diff(beatsLocs)/framerate;`
@@ -103,8 +101,7 @@ _Example_:
 `hrv_filtered = postprocessHRV(hrv);`
 
 
-![HRV](https://github.com/Lenskiy/Eye-research-library/blob/master/v3/Figures/hrvDemo.png)
-
+<img src="https://github.com/Lenskiy/Eye-research-library/blob/master/v3/Figures/hrvDemo.png" width="600">
 
 
 
