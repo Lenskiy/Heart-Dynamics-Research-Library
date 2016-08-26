@@ -7,7 +7,7 @@ function color_channels = ExtractColorFluctuationsAdapt(VideoPath, reduction_coe
     color_channels{1} = zeros(vidHeight/reduction_coef, vidWidth/reduction_coef, nFrames);
     color_channels{2} = zeros(vidHeight/reduction_coef, vidWidth/reduction_coef, nFrames);
     color_channels{3} = zeros(vidHeight/reduction_coef, vidWidth/reduction_coef, nFrames);
-    for k = 1 : nFrames
+    for k = 1 : 1000
         k/nFrames
         im = read(xyloObj, k);     
         color_channels{1}(:,:,k) = (im(1:reduction_coef:vidHeight,1:reduction_coef:vidWidth,1));
