@@ -3,7 +3,7 @@
 A set of function for extracting PPG from videos recorded by a smartphone’s camera. The tip of the finger should be resting on the camera, gently pressing the camera.
 
 
-![PPG analysis](https://github.com/Lenskiy/Eye-research-library/blob/master/v3/Figures/flowchart.png | width=600)
+![PPG analysis](https://github.com/Lenskiy/Eye-research-library/blob/master/v3/Figures/flowchart.png)
 
 
 
