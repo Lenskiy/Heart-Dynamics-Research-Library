@@ -23,7 +23,7 @@ _Example_:
 
 
 #### videoToPPG() 
-converts video to PPG signal. The function sums up all pixles in each frame, producing one sample of a PPG signal then removes extremely large values setting them to zero and applies pass-band filter.  
+converts video to PPG signal. The function sums up all pixels in each frame, producing one sample of a PPG signal then removes extremely large values setting them to zero and applies band-pass filter.  
 
 _Example_:
 ```
@@ -48,7 +48,7 @@ _Example_:
 `minLocs = localizeMinima(ppg, maxLocs);`
 
 #### peakEnvelopeGivenPeaks() 
-make use of maxima and minima to find the envelope of the signal.
+makes use of maxima and minima to find the envelope of the signal.
 
 _Example_:
 `env = peakEnvelopeGivenPeaks(ppg, minLocs, maxLocs);`
@@ -63,7 +63,7 @@ _Example_:
 `eqPpg = equalizeSignal(ppg, env);`
 
 #### segmentBeats() 
-splits an input signal into array of beats. The beats are resampled to have the same number of samples. 
+splits an input signal into an array of beats. The beats are resampled to have the same number of samples. 
 
 _Example_:
 `beats = segmentBeats(ppg, minLocs, 30);`
